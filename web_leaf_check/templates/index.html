@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <!-- site metas -->
+   <title>Leaf Check</title>
+   <link rel="shortcut icon" href="../static/img/logo.png">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" href="../static/bootstrap.min.css">
+   <!-- style css -->
+   <link rel="stylesheet" href="../static/style.css">
+   <!-- responsive-->
+   <link rel="stylesheet" href="../static/responsive.css">
+</head>
+<!-- body -->
+
+<body class="main-layout inner_page">
+   <!-- header -->
+   <header>
+      <!-- header inner -->
+      <div class="head-top">
+         <div class="container-fluid">
+            <div class="row d_flex">
+               <div class="col-sm-3">
+                  <div class="logo">
+                     <a href="index.html"><img src="../static/img/logo.png" /></a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
+   <!-- end header -->
+
+   <!-- contact section -->
+   <div class="contact left_cross_right">
+      <div class="container">
+         <!-- <div class="row"> -->
+         <div class="airmic">
+            <h1>Deteksi Cerdas Daun Herbal & Beracun</h1>
+         </div>
+         <div class="col-md-9">
+            <div class="airmic">
+               <p>Leaf Check adalah website yang membantu mengidentifikasi jenis daun tanaman herbal dan beracun secara
+                  cepat dan akurat. Website ini bertujuan untuk menganalisis serta memberikan informasi lengkap mengenai
+                  nama dan kategori daun, apakah termasuk tanaman herbal yang aman atau tanaman beracun yang berbahaya
+                  jika dikonsumsi.
+               </p>
+               <form class="main_form" method="POST" action="{{url_for('home')}}" enctype="multipart/form-data">
+                  <div class="row">
+                     <div class="col-md-12 airmic">
+                        <div class="row">
+                           <div class="col-8">
+                              <input class="contactus" type="file" class="form-control" name='image'>
+                           </div>
+                           <div class="col-4">
+                              <button class="send_btn">Klasifikasi</button>
+                           </div>
+                        </div>
+                        <!-- <h6>OR</h6>
+                        <div class="row">
+                           <div class="col-8">
+                              <input class="contactus" type="file" class="form-control" name='image'>
+                           </div>
+                           <div class="col-4">
+                              <button class="send_btn">Prediksi</button>
+                           </div>
+                        </div> -->
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- end contact section -->
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- basic -->
+  <meta charset="utf-8">
+  <!-- site metas -->
+  <title>Leaf Check</title>
+  <link rel="shortcut icon" href="../static/img/logo.png">
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="../static/bootstrap.min.css">
+  <!-- style css -->
+  <link rel="stylesheet" href="../static/style.css">
+  <!-- responsive-->
+  <link rel="stylesheet" href="../static/responsive.css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+</head>
+
+<!-- body -->
+<body class="main-layout inner_page">
+
+  <!-- Header -->
+  <header>
+    <div class="head-top">
+      <div class="container-fluid">
+        <div class="row d_flex">
+          <div class="col-sm-3">
+            <div class="logo">
+              <a href="/"><img src="../static/img/logo.png" /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="about">
+    <div class="container-fluid">
+      <div class="row d_flex">
+
+        <!-- Informasi Hasil -->
+        <div class="col-md-6">
+          <div class="titlepage text_align_left">
+            <h2>Hasil Deteksi</h2>
+
+            {% if data.fail_safe %}
+            <div class="alert alert-warning" role="alert">
+              ⚠️ <strong>Prediksi Tidak Yakin:</strong> Model mendeteksi ambiguitas. Silakan verifikasi ulang gambar atau unggah gambar dengan kualitas lebih baik.
+            </div>
+            {% endif %}
+
+            <!-- Tabel Hasil -->
+            <table class="table table-bordered" style="text-align: center; font-size: medium; background: #f0f5e1;">
+              <thead style="background: #aec999;">
+                <tr>
+                  <th>Nama Tanaman</th>
+                  <th>Kategori</th>
+                  <th>Akurasi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ data.nama_lengkap }}</td>
+                  <td>{{ data.kategori }}</td>
+                  <td>{{ data.akurasi }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Tabel Deskripsi -->
+            <table class="table table-bordered" style="font-size: medium;">
+              <thead style="text-align: center; background: #aec999;">
+                <tr><th>Tentang Tanaman</th></tr>
+              </thead>
+              <tbody>
+                <tr><td style="text-align: justify;">{{ data.deskripsi }}</td></tr>
+              </tbody>
+            </table>
+
+            <!-- Tabel Solusi -->
+            {% if data.solusi %}
+            <table class="table table-bordered" style="font-size: medium;">
+              <thead style="text-align: center; background: #aec999;">
+                <tr><th>Rekomendasi dan Solusi</th></tr>
+              </thead>
+              <tbody>
+                <tr><td style="text-align: justify;">{{ data.solusi }}</td></tr>
+              </tbody>
+            </table>
+            {% endif %}
+
+            <!-- UX Metrics -->
+            <table class="table table-bordered" style="font-size: medium;">
+              <thead style="text-align: center; background: #aec999;">
+                <tr><th colspan="2">Metrics UX</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Waktu Respon</strong></td>
+                  <td>{{ data.inference_time }} detik</td>
+                </tr>
+                <tr>
+                  <td><strong>Error Rate</strong></td>
+                  <td>{{ data.error_rate }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <a class="read_more" href="/" style="margin-top: 10px;">Home Page</a>
+          </div>
+        </div>
+
+        <!-- Gambar -->
+        <div class="col-md-6">
+          <div class="about_img">
+            <figure>
+              <img class="img_responsive" src="{{ url_for('load_img', filename=data.filename) }}" alt="Uploaded Image" />
+            </figure>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
